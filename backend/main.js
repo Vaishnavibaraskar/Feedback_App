@@ -13,6 +13,6 @@ app.get("/", (req, res) => {
     res.send("Welcome...");
 });
 
-app.listen(3000, () => {
-    console.log("Server started on port 3000");
+app.listen(5000, () => {
+    console.log("Server started on port 5000");
 });
