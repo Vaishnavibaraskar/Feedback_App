@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function FeedbackForm() {
+  const [successMsg, setSuccessMsg] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,23 +17,36 @@ function FeedbackForm() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    await axios.post("http://localhost:5000/api/feedback", formData);
+  const res = await axios.post(
+    "http://localhost:5000/api/feedback",
+    formData
+  );
 
-    alert("Feedback submitted successfully!");
+  if (res.data.success) {
+    setSuccessMsg("✅ " + res.data.message);
 
     setFormData({
       name: "",
       email: "",
       message: "",
     });
-  };
+  } else {
+    setSuccessMsg("⚠️ " + res.data.message);
+  }
+};
 
   return (
     <div className="container">
       <h2>Feedback Form</h2>
+
+      {successMsg && (
+        <p style={{ color: "green", textAlign: "center" }}>
+          {successMsg}
+        </p>
+      )}
 
       <form onSubmit={handleSubmit}>
         <input

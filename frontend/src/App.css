@@ -37,7 +37,9 @@
   }
 }
 */
-.container {
+
+
+/*.container {
   width: 400px;
   margin: 80px auto;
   padding: 25px;
@@ -59,4 +61,158 @@ button {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(120deg, #667eea, #764ba2);
+  min-height: 100vh;
+}
+
+.container {
+  width: 420px;
+  margin: 80px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  background: #667eea;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #5a67d8;
+}
+
+/* ADMIN PANEL */
+
+/*.admin-container {
+  width: 80%;
+  margin: 60px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background: #667eea;
+  color: white;
+}
+
+tr:hover {
+  background: #f2f2f2;
+}
+*/
+
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(120deg, #667eea, #764ba2);
+  min-height: 100vh;
+}
+
+.container {
+  width: 420px;
+  margin: 80px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+textarea {
+  height: 90px;
+}
+
+button {
+  width: 100%;
+  background: #4f46e5;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #4338ca;
+}
+
+.admin-container {
+  width: 80%;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  background: #4f46e5;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background: #f3f4f6;
 }

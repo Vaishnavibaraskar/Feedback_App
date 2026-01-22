@@ -1,19 +1,60 @@
 const Feedback = require("../model/feedbackModel");
 
-const createFeedback = async (req, res) => {
-    const { name, comment, rating } = req.body;
-    if (rating < 1 || rating > 5) {
-        return res.status(400).json({ message: "Rating must be between 1 and 5" });
+// CREATE FEEDBACK
+exports.createFeedback = async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+
+    // already submitted
+    const existing = await Feedback.findOne({ email });
+
+    if (existing) {
+      return res.json({
+        success: false,
+        message: "You have already submitted feedback.",
+      });
     }
 
-    const feedback = new Feedback({ name, comment, rating });
-    await feedback.save();
-    res.status(201).json({ message: "Feedback submitted", feedback });
+    await Feedback.create({
+      name,
+      email,
+      message,
+    });
+
+    res.json({
+      success: true,
+      message: "Feedback submitted successfully!",
+    });
+  } catch (err) {
+    res.json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
 };
 
-const getFeedback = async (req, res) => {
-    const feedback = await Feedback.find();
-    res.json(feedback);
+// GET ALL FEEDBACK
+exports.getFeedback = async (req, res) => {
+  try {
+    const feedbacks = await Feedback.find().sort({ _id: -1 });
+    res.json(feedbacks);
+  } catch (err) {
+    res.json([]);
+  }
 };
+// DELETE FEEDBACK
+exports.deleteFeedback = async (req, res) => {
+  try {
+    await Feedback.findByIdAndDelete(req.params.id);
 
-module.exports = { createFeedback, getFeedback };
+    res.json({
+      success: true,
+      message: "Feedback deleted successfully",
+    });
+  } catch (err) {
+    res.json({
+      success: false,
+      message: "Delete failed",
+    });
+  }
+};
